@@ -11,6 +11,7 @@ import {
   setVendors,
 } from "../redux/features/vendors/venderSlice";
 import { Card } from "../components/Card/Card";
+
 export default function Home() {
   const firstRender = useRef(false);
 

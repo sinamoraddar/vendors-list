@@ -1,8 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import CardSkeleton from "../CardSkeleton/CardSkeleton";
 import { useDispatch, useSelector } from "react-redux";
-import { incrementPage } from "../../redux/features/vendors/venderSlice";
+
 import { RootState } from "../../redux/store";
 
 type Props = {
