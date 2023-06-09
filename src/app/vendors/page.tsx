@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import InfiniteScroll from "../components/InfiniteScroll";
+import InfiniteScroll from "../components/InfiniteScroll/InfiniteScroll";
 import styles from "./page.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import {
   incrementPage,
   setVendors,
 } from "../redux/features/vendors/venderSlice";
-import { Card } from "../components/Card";
+import { Card } from "../components/Card/Card";
 export default function Home() {
   const firstRender = useRef(false);
 
