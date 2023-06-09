@@ -1,19 +1,24 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import CardSkeleton from "./CardSkeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { incrementPage } from "../redux/features/vendors/venderSlice";
+import { RootState } from "../redux/store";
 
 type Props = {
   fetchData: any;
 };
 const InfiniteScroll = ({ fetchData }: Props) => {
-  const [page, setPage] = useState(0);
+  const page = useSelector((state: RootState) => state.vendors.page);
+
+  const dispatch = useDispatch();
 
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
     ) {
-      setPage((page) => page + 1);
+      fetchData?.();
     }
   };
 
@@ -26,7 +31,9 @@ const InfiniteScroll = ({ fetchData }: Props) => {
   }, []);
 
   useEffect(() => {
-    fetchData?.(page);
+    if (page === 0) {
+      fetchData?.();
+    }
   }, [page]);
 
   return <CardSkeleton />;

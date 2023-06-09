@@ -3,9 +3,14 @@
 import Link from "next/link";
 import InfiniteScroll from "../components/InfiniteScroll";
 import styles from "./page.module.scss";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import {
+  incrementPage,
+  setVendors,
+} from "../redux/features/vendors/venderSlice";
 const Card = ({ data }) => {
-  console.log(data);
   return (
     <a target="_blank" href={data.menuUrl} className={styles.card}>
       <header className={styles.header}>
@@ -179,27 +184,37 @@ const Card = ({ data }) => {
 
 export default function Home() {
   const firstRender = useRef(false);
-  const [vendorList, setVendorList] = useState([]);
 
-  const fetchVendors = (page: number) => {
+  const { vendorList, page } = useSelector((state: RootState) => state.vendors);
+  const dispatch = useDispatch();
+  console.log("vendorList", vendorList, page);
+
+  const fetchVendors = useCallback(() => {
     fetch(
       `https://snappfood.ir/mobile/v3/restaurant/vendors-list?lat=35.754&long=51.328&page =${page}&page_size=10`
     )
       .then((data) => data.json())
       .then((result) => {
-        setVendorList((vendorList) => [
-          ...vendorList,
-          ...result.data.finalResult.filter((item) => item.type === "VENDOR"),
-        ]);
+        const data = result.data.finalResult.filter(
+          (item) => item.type === "VENDOR"
+        );
+
+        dispatch(
+          setVendors(
+            result.data.finalResult.filter((item) => item.type === "VENDOR")
+          )
+        );
+        dispatch(incrementPage());
       })
       .catch((e) => {});
-  };
+  }, [dispatch, page]);
+
   useEffect(() => {
-    console.log(firstRender.current);
     if (!firstRender.current) {
       firstRender.current = true;
     }
   }, []);
+
   return (
     <main className={styles.Vendors}>
       <Link href="/">Go Home</Link>
