@@ -4,8 +4,9 @@ import InfiniteScroll from "./components/InfiniteScroll";
 import styles from "./page.module.scss";
 import { useEffect, useRef, useState } from "react";
 const Card = ({ data }) => {
+  console.log(data);
   return (
-    <div className={styles.card}>
+    <a href={data.menuUrl} className={styles.card}>
       <header className={styles.header}>
         <img className={styles.banner} src={data.backgroundImage} />
         <img className={styles.logo} src={data.logo} />
@@ -15,7 +16,7 @@ const Card = ({ data }) => {
         <div className={styles.restaurantInfo}>
           <div className={styles.restaurantName}>
             <h3>{data.title}</h3>
-            <div className="_1rGaX">
+            <div className={styles.discountBadge}>
               <div className="_61kMH _2uVQH" data-is-disable="false">
                 <span>تا</span> <span>{data.discountValueForView}</span>
                 <div className="_1B0i4">
@@ -123,12 +124,12 @@ const Card = ({ data }) => {
               <div>
                 <div>
                   <div className={styles.restaurantScore}>
-                    <span className="DDyzO">
-                      <span className="_1Rd1d">(</span>
+                    <span className={styles.countReview}>
+                      <span>(</span>
                       {data.countReview}
                       <span className="_1Rd1d">)</span>
                     </span>
-                    <div className="mJXqQ">
+                    <div className={styles.rate}>
                       <span className="_1wmAX">{data.rate}</span>&nbsp;
                       <svg
                         width="12"
@@ -155,23 +156,23 @@ const Card = ({ data }) => {
             </div>
           </div>
         </div>
-        <div className={styles.restaurantCategory}>
-          <div className="_2ydF8">{data.description}</div>
-        </div>
-        <div className="flex justify-between">
+        <div className={styles.description}>{data.description}</div>
+        <div className={styles.delivery}>
           <div className="_1Z_vY">
             <div className="_2JgbG">
-              <span className="_3R-X9">
+              <span className={styles.deliveryType}>
                 {data.isZFExpress ? "ارسال اکسپرس" : "پیک فروشنده"}{" "}
               </span>
-              <span className="">{data.deliveryFee.toLocaleString()}</span>
+              <span className={styles.deliveryFee}>
+                {data.deliveryFee.toLocaleString()}
+              </span>
               <span>تومان</span>
             </div>
           </div>
           {data.eta > 0 && <div>تا {data.eta} دقیقه</div>}
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
