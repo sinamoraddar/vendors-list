@@ -16,7 +16,6 @@ export default function Home() {
 
   const { vendorList, page } = useSelector((state: RootState) => state.vendors);
   const dispatch = useDispatch();
-  console.log("vendorList", vendorList, page);
 
   const fetchVendors = useCallback(() => {
     fetch(
