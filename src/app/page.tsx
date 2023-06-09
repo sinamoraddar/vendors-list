@@ -1,10 +1,9 @@
 "use client";
 
+import InfiniteScroll from "./components/InfiniteScroll";
 import styles from "./page.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const Card = ({ data }) => {
-  console.log(data);
-
   return (
     <div className={styles.card}>
       <header className={styles.header}>
@@ -177,23 +176,27 @@ const Card = ({ data }) => {
 };
 
 export default function Home() {
+  const firstRender = useRef(false);
   const [vendorList, setVendorList] = useState([]);
-  console.log(vendorList);
-  const fetchVendors = () => {
+
+  const fetchVendors = (page: number) => {
     fetch(
-      "https://snappfood.ir/mobile/v3/restaurant/vendors-list?lat=35.754&long=51.328&page =0&page_size=15"
+      `https://snappfood.ir/mobile/v3/restaurant/vendors-list?lat=35.754&long=51.328&page =${page}&page_size=10`
     )
       .then((data) => data.json())
       .then((result) => {
-        console.log(result);
-
-        setVendorList(
-          result.data.finalResult.filter((item) => item.type === "VENDOR")
-        );
-      });
+        setVendorList((vendorList) => [
+          ...vendorList,
+          ...result.data.finalResult.filter((item) => item.type === "VENDOR"),
+        ]);
+      })
+      .catch((e) => {});
   };
   useEffect(() => {
-    fetchVendors();
+    console.log(firstRender.current);
+    if (!firstRender.current) {
+      firstRender.current = true;
+    }
   }, []);
   return (
     <main className="flex gap-1 min-h-screen flex-col items-center justify-between p-24">
@@ -203,6 +206,7 @@ export default function Home() {
             <Card data={vendor.data} key={vendor?.data?.id} />
           ))}
       </div>
+      <InfiniteScroll fetchData={fetchVendors} />
     </main>
   );
 }
