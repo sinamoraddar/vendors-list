@@ -200,13 +200,13 @@ export default function Home() {
   }, []);
   return (
     <main className="flex gap-1 min-h-screen flex-col items-center justify-between p-24">
-      <div className={"flex gap-4 flex-col"}>
+      <div className={styles.CardContainer}>
         {vendorList.length > 0 &&
           vendorList.map((vendor) => (
             <Card data={vendor.data} key={vendor?.data?.id} />
           ))}
+        <InfiniteScroll fetchData={fetchVendors} />
       </div>
-      <InfiniteScroll fetchData={fetchVendors} />
     </main>
   );
 }
