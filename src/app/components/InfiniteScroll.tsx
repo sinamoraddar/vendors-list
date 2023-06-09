@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import CardSkeleton from "./CardSkeleton";
 
 type Props = {
   fetchData: any;
@@ -28,7 +29,7 @@ const InfiniteScroll = ({ fetchData }: Props) => {
     fetchData?.(page);
   }, [page]);
 
-  return <div>...Loading</div>;
+  return <CardSkeleton />;
 };
 
 export default InfiniteScroll;
