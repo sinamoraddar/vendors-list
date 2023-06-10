@@ -2,24 +2,20 @@
   width: 567px;
   height: 248px;
   background: white;
-
   font-size: var(--text-small);
-  --header-size: 162px;
   color: inherit;
   -webkit-box-direction: normal;
   box-sizing: inherit;
   user-select: none;
   display: block;
-  --img-size: 130px;
   height: 248px;
   max-width: 567px;
   min-width: min(calc(100% - 4px), 260px);
-  background-color: var(--white-color);
+  background-color: white;
   direction: rtl;
   border-radius: 6px;
   border: solid 0.5px var(--seperator-color);
   box-shadow: var(--card-shadow-2);
-  --card-size: 100%;
   width: calc(100% - 32px);
 
   display: flex;
