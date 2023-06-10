@@ -31,7 +31,6 @@ export default function Home() {
   return (
     <main className={styles.Vendors}>
       <Link href="/">Go Home</Link>
-      <button onClick={fetchVendors}>fet</button>
       <div className={styles.CardContainer}>
         {vendorList.length > 0 &&
           vendorList.map((vendor) => (
