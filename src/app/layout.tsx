@@ -1,9 +1,11 @@
 import "./globals.css";
-import "../styles/fonts.css";
+
 import { Inter } from "next/font/google";
 import { Providers } from "./redux/Provider";
 
-const inter = Inter({ subsets: ["latin"] });
+import localFont from "next/font/local";
+
+const iranSansFont = localFont({ src: "./fonts/IranSans.woff" });
 
 export const metadata = {
   title: "Vendors List",
@@ -17,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={iranSansFont.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
