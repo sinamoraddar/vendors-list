@@ -139,51 +139,29 @@
 
 .discountBadge {
   -webkit-font-smoothing: antialiased;
-  font-weight: 400;
   text-rendering: optimizeLegibility;
   text-shadow: none !important;
   line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
   direction: rtl;
+  -webkit-box-direction: normal;
   box-sizing: inherit;
   user-select: none;
+  font-size: var(--text-small);
+  font-weight: var(--font-medium);
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  flex-direction: row;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
+  -webkit-box-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
   align-items: center;
 
-  > div {
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    text-shadow: none !important;
-    line-height: 1.15;
-    -webkit-text-size-adjust: 100%;
-    direction: rtl;
-    -webkit-box-direction: normal;
-    box-sizing: inherit;
-    user-select: none;
-    font-size: var(--text-small);
-    font-weight: var(--font-medium);
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
-    width: 32px;
-    height: 14px;
-    border-radius: 4px;
-    text-align: center;
-    vertical-align: middle;
-    padding: 4px;
-    padding-bottom: 3px;
-    color: white;
-    background-color: var(--primary-color);
-
-    padding: 10px 20px;
-  }
+  border-radius: 4px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 4px;
+  padding-bottom: 3px;
+  color: white;
+  background-color: var(--primary-color);
 }
 
 .countReview {

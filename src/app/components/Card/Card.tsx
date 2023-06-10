@@ -20,31 +20,8 @@ export const Card = ({ data }: { data: VendorShape }) => (
         <div className={styles.restaurantName}>
           <h3>{data.title}</h3>
           <div className={styles.discountBadge}>
-            <div>
-              <span>تا</span> <span>{data.discountValueForView}</span>
-              <div>
-                <svg
-                  width="7"
-                  height="10"
-                  viewBox="0 0 7 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M5.98384 2.49114C6.15147 2.1894 6.04276 1.8089 5.74102 1.64127C5.43928 1.47363 5.05878 1.58235 4.89114 1.88409L1.76614 7.50909C1.59851 7.81083 1.70723 8.19133 2.00897 8.35896C2.3107 8.5266 2.69121 8.41788 2.85884 8.11614L5.98384 2.49114Z"
-                    fill="var(--white-color)"
-                  ></path>
-                  <path
-                    d="M1.68749 2.34386C1.68749 1.91239 2.03727 1.56261 2.46874 1.56261C2.90021 1.56261 3.24999 1.91239 3.24999 2.34386C3.24999 2.77534 2.90021 3.12511 2.46874 3.12511C2.03727 3.12511 1.68749 2.77534 1.68749 2.34386Z"
-                    fill="var(--white-color)"
-                  ></path>
-                  <path
-                    d="M4.49999 7.65636C4.49999 7.22489 4.84977 6.87511 5.28124 6.87511C5.71272 6.87511 6.06249 7.22489 6.06249 7.65636C6.06249 8.08784 5.71272 8.43761 5.28124 8.43761C4.84977 8.43761 4.49999 8.08784 4.49999 7.65636Z"
-                    fill="var(--white-color)"
-                  ></path>
-                </svg>
-              </div>
-            </div>
+            تا
+            {data.discountValueForView} %
           </div>
           <div>
             <svg
