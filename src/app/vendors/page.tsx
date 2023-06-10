@@ -11,44 +11,27 @@ import {
   setVendors,
 } from "../redux/features/vendors/venderSlice";
 import { Card } from "../components/Card/Card";
+import { getVendors } from "../api";
 
 export default function Home() {
-  const firstRender = useRef(false);
-
   const { vendorList, page } = useSelector((state: RootState) => state.vendors);
   const dispatch = useDispatch();
 
-  const fetchVendors = useCallback(() => {
-    fetch(
-      `https://snappfood.ir/mobile/v3/restaurant/vendors-list?lat=35.754&long=51.328&page =${page}&page_size=10`
-    )
-      .then((data) => data.json())
-      .then((result) => {
-        const data = result.data.finalResult.filter(
-          (item: any) => item.type === "VENDOR"
-        );
-
-        dispatch(
-          setVendors(
-            result.data.finalResult.filter(
-              (item: any) => item.type === "VENDOR"
-            )
-          )
-        );
-        dispatch(incrementPage());
-      })
-      .catch((e) => {});
+  const fetchVendors = useCallback(async () => {
+    try {
+      const result = await getVendors(page);
+      const data = result.data.finalResult.filter(
+        (item: any) => item.type === "VENDOR"
+      );
+      dispatch(setVendors(data));
+      dispatch(incrementPage());
+    } catch (e) {}
   }, [dispatch, page]);
-
-  useEffect(() => {
-    if (!firstRender.current) {
-      firstRender.current = true;
-    }
-  }, []);
 
   return (
     <main className={styles.Vendors}>
       <Link href="/">Go Home</Link>
+      <button onClick={fetchVendors}>fet</button>
       <div className={styles.CardContainer}>
         {vendorList.length > 0 &&
           vendorList.map((vendor) => (

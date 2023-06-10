@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import CardSkeleton from "../CardSkeleton/CardSkeleton";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,17 +10,14 @@ type Props = {
 };
 const InfiniteScroll = ({ fetchData }: Props) => {
   const page = useSelector((state: RootState) => state.vendors.page);
-
-  const dispatch = useDispatch();
-
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
     ) {
       fetchData?.();
     }
-  };
+  }, [fetchData]);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -28,13 +25,12 @@ const InfiniteScroll = ({ fetchData }: Props) => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
-
+  }, [handleScroll]);
   useEffect(() => {
     if (page === 0) {
       fetchData?.();
     }
-  }, [page]);
+  }, [fetchData, page]);
 
   return <CardSkeleton />;
 };
