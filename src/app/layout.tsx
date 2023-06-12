@@ -1,11 +1,12 @@
 import "./globals.css";
 
-import { Inter } from "next/font/google";
 import { Providers } from "./redux/Provider";
 
 import localFont from "next/font/local";
 
-const iranSansFont = localFont({ src: "./fonts/IranSans.woff" });
+const iranSansFont = localFont({
+  src: "./fonts/IRANSans/woff/IRANSansWeb(FaNum).woff",
+});
 
 export const metadata = {
   title: "Vendors List",
