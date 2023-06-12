@@ -32,7 +32,13 @@ const InfiniteScroll = ({ fetchData }: Props) => {
     }
   }, [fetchData, page]);
 
-  return <CardSkeleton />;
+  return (
+    <>
+      <CardSkeleton />
+      <CardSkeleton />
+      <CardSkeleton />
+    </>
+  );
 };
 
 export default InfiniteScroll;

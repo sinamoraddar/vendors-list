@@ -36,6 +36,7 @@
   direction: rtl;
   border-radius: 6px;
   border: solid 0.5px var(--seperator-color);
+  -webkit-box-shadow: var(--card-shadow-2);
   box-shadow: var(--card-shadow-2);
 
   width: 100%;
