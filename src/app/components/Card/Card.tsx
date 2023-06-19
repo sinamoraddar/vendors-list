@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import styles from "./Card.module.scss";
 import { VendorShape } from "@/app/utils/dataShapes";
@@ -6,13 +5,21 @@ import { VendorShape } from "@/app/utils/dataShapes";
 export const Card = ({ data }: { data: VendorShape }) => (
   <a target="_blank" href={data.menuUrl} className={styles.card}>
     <div className={styles.header}>
-      <img
+      <Image
         className={styles.banner}
         alt={data.title}
         src={data.backgroundImage}
+        width={565}
+        height={134}
       />
 
-      <img className={styles.logo} alt={data.title} src={data.logo} />
+      <Image
+        className={styles.logo}
+        alt={data.title}
+        src={data.logo}
+        width={56}
+        height={56}
+      />
     </div>
 
     <div className={styles.details}>

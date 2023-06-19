@@ -1,8 +1,7 @@
 "use client";
 import React, { useCallback, useEffect } from "react";
 import CardSkeleton from "../CardSkeleton/CardSkeleton";
-import { useDispatch, useSelector } from "react-redux";
-
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 
 type Props = {
