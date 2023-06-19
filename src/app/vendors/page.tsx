@@ -5,13 +5,13 @@ import InfiniteScroll from "../components/InfiniteScroll/InfiniteScroll";
 import styles from "./page.module.scss";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { RootState } from "../../redux/store";
 import {
   incrementPage,
   setVendors,
-} from "../redux/features/vendors/venderSlice";
+} from "../../redux/features/vendors/venderSlice";
 import { Card } from "../components/Card/Card";
-import { getVendors } from "../api";
+import { getVendors } from "../../api";
 
 export default function Home() {
   const { vendorList, page } = useSelector((state: RootState) => state.vendors);

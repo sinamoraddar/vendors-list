@@ -2,7 +2,7 @@
 import React, { useCallback, useEffect } from "react";
 import CardSkeleton from "../CardSkeleton/CardSkeleton";
 import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import { RootState } from "../../../redux/store";
 
 type Props = {
   fetchData: any;

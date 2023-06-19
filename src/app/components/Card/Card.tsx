@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./Card.module.scss";
-import { VendorShape } from "@/app/utils/dataShapes";
+import { VendorShape } from "@/utils/dataShapes";
 
 export const Card = ({ data }: { data: VendorShape }) => (
   <a target="_blank" href={data.menuUrl} className={styles.card}>
